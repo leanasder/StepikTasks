@@ -13,6 +13,16 @@ std::vector<int> mergeHeaps(const std::vector<int>& heap1,
     return result;
 }
 
+// removing k times max element from heap and print the result
+void printKMax(std::vector<int>& heap, int k) {
+    
+    for (int i = 0; i < k && !heap.empty(); ++i) {
+        std::pop_heap(heap.begin(), heap.end()); // max in temp.back()
+        std::cout << heap.back() << " ";
+        heap.pop_back();
+    }
+}
+
 int main() {
     // getting first heap == heap1
     int n;
@@ -41,6 +51,24 @@ int main() {
     }
 
     //merging heap1 and heap2
-    auto merged = mergeHeaps(heap1, heap2);
+    auto mergedHeap = mergeHeaps(heap1, heap2);
+
+    // adding number x
+    int x;
+    std::cin >> x;
+    mergedHeap.push_back(x);
+
+    // Find the k maximum elements and print them.
+    int k;
+    std::cin >> k;
+    printKMax(mergedHeap, k);
+
+    // Sort heap
+    sort(mergedHeap.begin(), mergedHeap.end());
+
+    // Print the result
+    for (auto& x: mergedHeap) {
+        std:: cout << x << ' ';
+    }
 
 }
