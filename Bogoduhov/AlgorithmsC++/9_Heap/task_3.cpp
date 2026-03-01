@@ -57,6 +57,7 @@ int main() {
     int x;
     std::cin >> x;
     mergedHeap.push_back(x);
+    std::make_heap(mergedHeap.begin(), mergedHeap.end()); 
 
     // Find the k maximum elements and print them.
     int k;
